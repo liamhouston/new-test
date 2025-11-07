@@ -122,6 +122,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']      # dev/static files
+STATIC_ROOT = BASE_DIR / 'staticfiles'      # prod/collected static files
 if not DEBUG:
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')        # where collectstatic puts files for production 
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
