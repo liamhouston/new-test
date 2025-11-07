@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Music Yearbook - {{ month_name }} {{ year }}</title>
+</head>
+<body>
+    <h1>Music Yearbook: {{ month_name }} {{ year }}</h1>
+    <div>
+        {% if tracks %}
+            {% for track in tracks %}
+                <div>
+                    <strong>{{ track.title }}</strong> by {{ track.artist }}
+                    {% if track.album %} <em>({{ track.album }})</em>{% endif %}
+                </div>
+            {% endfor %}
+        {% else %}
+            <div>No tracks added for this month yet.</div>
+        {% endif %}
+    </div>
+</body>
+</html>

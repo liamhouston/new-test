@@ -46,6 +46,13 @@
             currentYear++;
             document.getElementById('yearDisplay').textContent = currentYear;
         };
+        // Add click handlers to month buttons
+        document.querySelectorAll('.month').forEach(function(td) {
+            td.onclick = function() {
+                var month = td.getAttribute('data-month');
+                window.location.href = "{% url 'music_yearbook:month' year=0 month=1 %}".replace('0', currentYear).replace('1', month);
+            };
+        });
     </script>
 </body>
 </html>
