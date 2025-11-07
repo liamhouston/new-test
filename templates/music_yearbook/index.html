@@ -1,9 +1,51 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Hello World</title>
-    </head>
-    <body>
-        Hello World
-    </body>
+<head>
+    <title>Interactive Calendar</title>
+</head>
+<body>
+    <div class="controls">
+        <button id="prevYear">Previous Year</button>
+        <span id="yearDisplay">2024</span>
+        <button id="nextYear">Next Year</button>
+    </div>
+    <div class="calendar">
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="12">Months</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="month" data-month="1">January</td>
+                    <td class="month" data-month="2">February</td>
+                    <td class="month" data-month="3">March</td>
+                    <td class="month" data-month="4">April</td>
+                    <td class="month" data-month="5">May</td>
+                    <td class="month" data-month="6">June</td>
+                    <td class="month" data-month="7">July</td>
+                    <td class="month" data-month="8">August</td>
+                    <td class="month" data-month="9">September</td>
+                    <td class="month" data-month="10">October</td>
+                    <td class="month" data-month="11">November</td>
+                    <td class="month" data-month="12">December</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        let currentYear = 2025;
+        document.getElementById('yearDisplay').textContent = currentYear;
+
+        document.getElementById('prevYear').onclick = function() {
+            currentYear--;
+            document.getElementById('yearDisplay').textContent = currentYear;
+        };
+        document.getElementById('nextYear').onclick = function() {
+            currentYear++;
+            document.getElementById('yearDisplay').textContent = currentYear;
+        };
+    </script>
+</body>
 </html>
