@@ -6,17 +6,24 @@
 </head>
 <body>
     <h1>Music Yearbook: {{ month_name }} {{ year }}</h1>
-    <div>
+        <h2>Tracks:</h2>
         {% if tracks %}
             {% for track in tracks %}
-                <div>
-                    <strong>{{ track.title }}</strong> by {{ track.artist }}
-                    {% if track.album %} <em>({{ track.album }})</em>{% endif %}
-                </div>
+                <strong>{{ track.title }}</strong> by {{ track.artist }}
+                {% if track.album %} <em>({{ track.album }})</em>{% endif %}
             {% endfor %}
         {% else %}
-            <div>No tracks added for this month yet.</div>
+            No tracks added for this month yet.
         {% endif %}
-    </div>
+        <h2>Images:</h2>
+        {% if images %}
+            <ul>
+                {% for image in images %}
+                    <li><img src="{{ image.url }}" alt="{{ image.alt_text }}"></li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No images added for this month yet.</p>
+        {% endif %}
 </body>
 </html>

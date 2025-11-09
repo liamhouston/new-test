@@ -9,5 +9,6 @@ from music_yearbook import views as music_views
 app_name = "music_yearbook"
 urlpatterns = [
     path("", music_views.MusicYearbookView.as_view(), name="index"),
-    path("<int:year>/<int:month>/", MonthView.as_view(), name="month"),
+    path("<uuid:id>/", music_views.MusicYearbookView.as_view(), name="user_index"), 
+    path("<uuid:id>/<int:year>/<int:month>/", MonthView.as_view(), name="month"),
 ]

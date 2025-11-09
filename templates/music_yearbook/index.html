@@ -6,7 +6,7 @@
 <body>
     <div class="controls">
         <button id="prevYear">Previous Year</button>
-        <span id="yearDisplay">2024</span>
+        <span id="yearDisplay">{{ current_year }}</span>
         <button id="nextYear">Next Year</button>
     </div>
     <div class="calendar">
@@ -35,8 +35,9 @@
         </table>
     </div>
     <script>
-        let currentYear = 2025;
-        document.getElementById('yearDisplay').textContent = currentYear;
+        let currentYear = parseInt(document.getElementById('yearDisplay').textContent);
+        const base = "{% url 'music_yearbook:index' %}";
+        const userId = "{{ user.id }}";
 
         document.getElementById('prevYear').onclick = function() {
             currentYear--;
@@ -48,10 +49,11 @@
         };
         // Add click handlers to month buttons
         document.querySelectorAll('.month').forEach(function(td) {
-            td.onclick = function() {
-                var month = td.getAttribute('data-month');
-                window.location.href = "{% url 'music_yearbook:month' year=0 month=1 %}".replace('0', currentYear).replace('1', month);
-            };
+            td.addEventListener('click', function() {
+                const month = td.dataset.month;
+                const url = `${base}${userId}/${currentYear}/${month}/`;
+                window.location.href = url;
+            });
         });
     </script>
 </body>

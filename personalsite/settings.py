@@ -28,6 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'mysite-rv0n.onrender.com']
 
+AUTH_USER_MODEL = 'music_yearbook.Author'
 
 # Application definition
 

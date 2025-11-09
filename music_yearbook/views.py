@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.conf import settings
 from django.http import Http404
+from datetime import date
 
 
 TEMPLATE_DIR = str(settings.BASE_DIR) + '/templates/music_yearbook/'
@@ -12,6 +13,12 @@ MONTH_NAMES = [
 
 class MusicYearbookView(TemplateView):
     template_name = TEMPLATE_DIR + 'index.html'
+    
+    def get_context_data(self, **kwargs):
+        """Provide the current year to the index template."""
+        context = super().get_context_data(**kwargs)
+        context['current_year'] = date.today().year
+        return context
 
 
 class MonthView(TemplateView):
